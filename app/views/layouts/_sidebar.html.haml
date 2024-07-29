@@ -1,0 +1,42 @@
+
+%ul.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion#accordionSidebar
+  %a.sidebar-brand.d-flex.align-items-center.justify-content-center{:href => "index.html"}
+    %div.sidebar-brand-icon.rotate-n-15
+      %i.fas.fa-laugh-wink
+
+
+  %hr.sidebar-divider.my-0
+  %li.nav-item
+    - if @admin_user.present?
+      = link_to admin_signin_path(@admin_user), method: :delete, class: 'nav-link collapsed' do
+        %i.fas.fa-solid.fa-circle-user
+        %span Đăng xuất
+    - else
+      = link_to admin_signin_path, class: 'nav-link collapsed' do
+        %i.fas.fa-solid.fa-circle-user
+        %span Đăng nhập
+  %hr.sidebar-divider
+  %div.sidebar-heading Main
+  %li.nav-item.active
+    = link_to admin_root_path, class: 'nav-link' do
+      %i.fas.fa-fw.fa-tachometer-alt
+      %span Dashboard
+  %li.nav-item
+    = link_to admin_comics_path, class: 'nav-link collapsed' do
+      %i.fas.fa-fw.fa-book-open
+      %span Comics
+
+  %li.nav-item
+    = link_to admin_categories_path, class: 'nav-link collapsed' do
+      %i.fas.fa-fw.fa-list
+      %span Categories
+
+  %hr.sidebar-divider
+  .sidebar-heading Admin Users Setting
+  %li.nav-item
+    = link_to admin_admin_users_path, class: 'nav-link collapsed' do
+      %i.fas.fa-fw.fa-user
+      %span Admin Users
+    #collapsePages.collapse{"aria-labelledby" => "headingPages", "data-parent" => "#accordionSidebar"}
+
+  %hr.sidebar-divider.d-none.d-md-block

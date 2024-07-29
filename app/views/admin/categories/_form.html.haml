@@ -1,0 +1,7 @@
+= form_with model: [:admin, @category], url: @category.new_record? ? admin_categories_path : admin_category_path(@category.id) do |form|
+  .col-12
+    = form.label :name, class: 'form-label'
+    = form.text_field :name, class: 'form-control'
+
+  .col-12.mt-4
+    = form.submit 'Create', class: 'btn btn-primary'

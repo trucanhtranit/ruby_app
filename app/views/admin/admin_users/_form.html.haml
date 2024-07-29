@@ -1,0 +1,13 @@
+= form_with model: [:admin, @admin_user], url: @admin_user.new_record? ? admin_admin_users_path : admin_admin_user_path(@admin_user.id) do |form|
+  .col-12
+    = form.label :email, class: 'form-label'
+    = form.text_field :email, class: 'form-control'
+  .col-12
+    = form.label :password, class: 'form-label'
+    = form.password_field :password, class: 'form-control'
+  .col-12
+    = form.label :password_confirmation, class: 'form-label'
+    = form.password_field :password_confirmation, class: 'form-control'
+
+  .col-12.mt-4
+    = form.submit 'Create', class: 'btn btn-primary'

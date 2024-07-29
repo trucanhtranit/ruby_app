@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'signin/new'
+  get 'signin/create'
+  namespace :admin do
+    root 'dashboard#index'
+    resources :comics
+    resources :categories
+    resources :admin_users
+    resources :signin, only: %i[new create destroy delete]
+    get 'dashboard/index'
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
