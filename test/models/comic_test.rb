@@ -9,6 +9,7 @@
 #  image_url   :string
 #  status      :string
 #  title       :string
+#  url         :string
 #  views_count :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

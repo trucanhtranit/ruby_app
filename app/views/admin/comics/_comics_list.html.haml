@@ -1,18 +1,24 @@
-.table-responsive
-  %table.table.table-striped.table-hover#dataTable{width: "100%", cellspacing: "0"}
+.table-responsive.overflow-auto.rounded-top.border{style: 'max-height: 520px; font-size: 14px;'}
+  %table.table.table-striped.table-hover{width: "100%", cellspacing: "0"}
     %thead.table-dark
-      %tr
+      %tr.text-center
         %th ID
         %th Name
-        %th Description
+        %th.text-nowrap Latest Chapter
+        %th URL
         %th Category
         %th Actions
     %tbody
       - @comics.each do |comic|
         %tr
-          %td= comic.id
-          %td= comic.title
-          %td= comic.description
+          %td= link_to comic.id, admin_comic_path(comic)
+          %td= link_to comic.title, admin_comic_path(comic)
+          %td
+            - if comic.chapters.present?
+              = comic.chapters.first.title
+            - else
+              No chapter
+          %td= comic.url
           %td= comic.category.name
           %td.d-flex.gap-2
             = link_to edit_admin_comic_path(comic) do

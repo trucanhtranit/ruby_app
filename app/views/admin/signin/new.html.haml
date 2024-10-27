@@ -1,0 +1,30 @@
+.d-flex.justify-content-center.sign-in-page.align-items-center
+  .card-body.p-0.col-xl-10.col-lg-12.col-md-9
+    .d-flex.shadow-lg.rounded
+      .col-lg-6.d-none.d-lg-block.bg-login-image.p-0
+        = image_tag 'signin_banner.jpg', class: 'rounded'
+      .col-lg-6.p-5
+        .text-center
+          %h1.h4.text-gray-900.mb-4
+        = form_with model: [:admin, @admin_user], url: admin_signin_index_path do |form|
+          .form-group
+            = form.text_field :email, {id: "exampleInputEmail", aria_describedby: "emailHelp", placeholder: "Enter Email Address...", class: "form-control form-control-user"}
+          .form-group
+            = form.password_field :password, {id: "exampleInputPassword", placeholder: "Password", type: "password", class: "form-control form-control-user"}
+          .form-group
+            .custom-control.custom-checkbox.small
+              %input.custom-control-input{id: "customCheck", type: "checkbox"}
+              %label.custom-control-label{for: "customCheck"} Remember Me
+          = form.submit 'Login', class: 'btn btn-primary btn-user btn-block'
+          %hr
+          = link_to admin_user_google_oauth2_omniauth_authorize_path, data: { turbo: "false" }, method: :post, target: '_blank', rel: 'nofollow', class: 'btn btn-google btn-user btn-block' do
+            %i.fab.fa-google.fa-fw
+            |  Login with Google
+          = link_to admin_user_facebook_omniauth_authorize_path, data: { turbo: "false" }, method: :post, target: '_blank', rel: 'nofollow', class: 'btn btn-facebook btn-user btn-block' do
+            %i.fab.fa-facebook-f.fa-fw
+            |  Login with Facebook
+        %hr
+        .text-center
+          %a.small{href: "forgot-password.html"} Forgot Password?
+        .text-center
+          %a.small{href: "register.html"} Create an Account!

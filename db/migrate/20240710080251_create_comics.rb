@@ -8,6 +8,7 @@ class CreateComics < ActiveRecord::Migration[7.1]
       t.string :status
       t.boolean :available
       t.integer :views_count
+      t.string :url
       t.belongs_to :category, null: false, foreign_key: true
 
       t.timestamps

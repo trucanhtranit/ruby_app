@@ -1,6 +1,6 @@
 class Admin::CategoriesController < AdminController
   def index
-    @categories = Category.all
+    @pagy, @categories = pagy(Category.all)
   end
 
   def new

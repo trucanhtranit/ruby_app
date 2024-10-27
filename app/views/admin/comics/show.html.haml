@@ -1,4 +1,27 @@
-.py-3.px-4.bg-white.d-flex.align-items-center.gap-5.shadow-sm
-  = link_to admin_comics_path do
-    %i.fas.fa-chevron-left
-  %h2.text-primary Comic
+.py-3.px-4.bg-white.d-flex.align-items-center.gap-5.shadow-sm.justify-content-between
+  .d-flex.align-items-center.gap-5
+    = link_to admin_comics_path do
+      %i.fas.fa-chevron-left
+    %h4.text-primary= @comic.title
+  .d-flex.align-items-center.gap-1
+    = link_to 'View it in Mymanga.vn', new_admin_comic_path, class: 'text-white btn btn-primary'
+    = link_to 'Add new chapter', new_admin_comic_path, class: 'text-white btn btn-primary'
+
+.m-4.bg-white.shadow-sm.rounded-3.p-4
+  General Information ...
+  = form_with model: [:admin, @chapter], url: admin_chapters_path do |form|
+    = form.text_field :title, class: 'form-control', placeholder: 'Chapter title', required: true
+    = form.file_field :images, multiple: true, direct_upload: true
+    = form.submit 'Save', class: 'btn btn-primary'
+
+  - if @chapters.present?
+    - @chapters.each do |chapter|
+      %p Chapter #{chapter.title}
+      = link_to admin_chapter_path(chapter), method: :delete, data: { confirm: 'Bạn có chắc chắn không?' } do
+        %i.fas.fa-trash.text-danger
+      - if chapter.pages.present?
+        - chapter.pages.each do |page|
+          = image_tag page.url, width: '100%'
+      - else
+        - chapter.images.each do |image|
+          = image_tag image, width: '100%'

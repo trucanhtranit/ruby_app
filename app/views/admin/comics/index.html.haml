@@ -1,6 +1,10 @@
 .py-3.px-4.bg-white.d-flex.align-items-center.gap-5.shadow-sm.justify-content-between
-  %h2.text-primary Comics
-  = link_to 'New Comic', new_admin_comic_path, class: 'text-white btn btn-primary'
+  .d-flex.align-items-start.gap-1
+    %h2.text-dark
+      Comics
+    .badge.rounded-pill.bg-dark= @pagy.count
+  = link_to 'New Comic', new_admin_comic_path, class: 'text-white btn btn-dark'
 
 .m-4.bg-white.shadow-sm.rounded-3.p-4
   = render 'comics_list'
+= render 'layouts/pagination', pagy: @pagy

@@ -16,4 +16,4 @@
     = form.select :category_id, options_for_select(Category.all.map { |category| [category.name, category.id] }), {}, class: 'form-control'
 
   .col-12.mt-4
-    = form.submit 'Create', class: 'btn btn-primary'
+    = form.submit 'Save', class: 'btn btn-primary'

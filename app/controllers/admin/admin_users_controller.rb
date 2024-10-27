@@ -1,6 +1,6 @@
 class Admin::AdminUsersController < AdminController
   def index
-    @admin_users = AdminUser.all
+    @pagy, @admin_users = pagy(AdminUser.all)
   end
 
   def new

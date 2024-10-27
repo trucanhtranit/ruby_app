@@ -14,7 +14,8 @@
   %body
 
     #wrapper
-      = flash[:notice] if flash.present?
       = render "layouts/sidebar"
-      #content-wrapper
+      #content-wrapper.position-relative
+        - if flash.present?
+          = render "layouts/toast"
         = yield

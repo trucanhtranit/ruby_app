@@ -47,6 +47,7 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
+  gem 'byebug'
 end
 
 group :development do
@@ -73,3 +74,9 @@ gem 'haml'
 gem 'sassc-rails'
 gem 'bootstrap', '~> 5.3', '>= 5.3.3'
 gem 'nokogiri', '~> 1.16', '>= 1.16.6'
+gem 'omniauth-google-oauth2'
+gem "devise"
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-facebook'
+gem 'pagy'
+gem "image_processing", ">= 1.2"

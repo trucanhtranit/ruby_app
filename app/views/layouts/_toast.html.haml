@@ -1,2 +1,2 @@
-.z-1
-  = notice || alert
+.alert.alert-success.position-fixed.end-0.mt-5.px-5{role: "alert", data: {controller: "toast", "toast-target": "toast"}}
+  = flash[:notice] || flash[:alert]

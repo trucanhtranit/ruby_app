@@ -1,6 +1,6 @@
 class Admin::ComicsController < AdminController
   def index
-    @comics = Comic.all
+    @pagy, @comics = pagy(Comic.all.order(created_at: :desc))
   end
 
   def new
@@ -17,7 +17,9 @@ class Admin::ComicsController < AdminController
   end
 
   def show
-    @comic = Comic.find(params[:id])
+    @comic    = Comic.find(params[:id])
+    @chapter  = Chapter.new
+    @chapters = @comic.chapters
   end
 
   def edit
