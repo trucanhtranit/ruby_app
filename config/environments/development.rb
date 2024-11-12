@@ -23,7 +23,7 @@ Rails.application.configure do
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
-    config.cache_store = :memory_store
+    # config.cache_store = :memory_store
     config.public_file_server.headers = {
       "Cache-Control" => "public, max-age=#{2.days.to_i}"
     }
@@ -73,4 +73,15 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  config.cache_store = :redis_cache_store, {
+    url: ENV.fetch('REDIS_URL') { 'redis://localhost:6379/8' },
+    namespace: 'cache',
+    expires_in: 1.hour,
+    reconnect_attempts: 1, # Thử lại khi mất kết nối
+    error_handler: -> (method:, returning:, exception:) {
+      # Ghi log lỗi khi có sự cố kết nối Redis
+      Rails.logger.error "Redis cache error: #{method} raised #{exception.class} with message: #{exception.message}"
+    }
+  }
 end
