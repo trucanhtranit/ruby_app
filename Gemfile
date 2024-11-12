@@ -80,3 +80,7 @@ gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-facebook'
 gem 'pagy'
 gem "image_processing", ">= 1.2"
+gem 'haml-rails', '~> 2.0'
+gem 'redis'
+gem 'redis-rails'
+gem 'sidekiq'

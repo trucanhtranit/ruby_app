@@ -1,4 +1,9 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq'
+  
+  resources :products
   get 'signin/new'
   get 'signin/create'
   namespace :admin do

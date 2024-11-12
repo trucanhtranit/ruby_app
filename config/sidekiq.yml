@@ -1,0 +1,10 @@
+
+:concurrency: 5 # số lượng tác vụ đồng thời
+:queues:
+  - default
+  - mailers
+
+:redis:
+  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  network_timeout: 5
+  password: <%= ENV["REDIS_PASSWORD"] %>
